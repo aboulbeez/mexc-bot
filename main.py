@@ -3,6 +3,23 @@ import hmac
 import hashlib
 import requests
 
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+def run():
+    app.run(host="0.0.0.0", port=10000)
+
+def keep_alive():
+    t = threading.Thread(target=run)
+    t.start()
+
+keep_alive()  # ← استدعِها قبل بدء البوت
 # ===== إعداد المفاتيح =====
 API_KEY = "mx0vglcybDNzKBdv3Y"
 SECRET_KEY = "2d198ab42cab41318cef277858e8571f"
