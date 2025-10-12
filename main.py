@@ -82,7 +82,6 @@ while True:
         print("⏳ انتظار 5 دقائق قبل الصفقات القادمة...\n")
         time.sleep(poll_interval)
 
-
     except Exception as e:
         print("❌ خطأ:", e)
         time.sleep(5)
