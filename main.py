@@ -32,8 +32,15 @@ def place_order(side, sym, **kwargs):
     params["signature"] = sign(params)
     headers = {"X-MEXC-APIKEY": API_KEY}
     r = requests.post(BASE_URL + endpoint, headers=headers, params=params)
-    print(f"📤 تم إرسال أمر {side}")
-    return r.json()
+    data = r.json()
+
+    # تحقق من الرد إذا فيه خطأ
+    if "msg" in data:
+        print(f"⚠️ فشل أمر {side}: {data['msg']}")
+    else:
+        print(f"📤 تم إرسال أمر {side} بنجاح")
+
+    return data
 
 # ===== المنطق الرئيسي =====
 print(f"🚀 بدء تشغيل البوت على {symbol} (كل 5 دقائق 5 صفقات × 1 USDT)")
