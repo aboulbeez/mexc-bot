@@ -80,9 +80,6 @@ while True:
             place_order("SELL", symbol, type="LIMIT", quantity=str(qty),
                         price=str(sell_price), timeInForce="GTC")
 
-        print("⏳ انتظار 5 دقائق قبل الصفقات القادمة...\n")
         time.sleep(poll_interval)
-print(f"⏰ انتهى الانتظار - الوقت الحالي: {time.strftime('%Y-%m-%d %H:%M:%S')}")
-    except Exception as e:
-        print("❌ خطأ:", e)
-        time.sleep(5)
+    print(f"🕒 انتهى الانتظار - الوقت الحالي: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+except Exception as e:
