@@ -83,3 +83,5 @@ while True:
         time.sleep(poll_interval)
     print(f"🕒 انتهى الانتظار - الوقت الحالي: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 except Exception as e:
+print("❌ خطأ:", e)
+        time.sleep(5)
