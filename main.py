@@ -28,7 +28,7 @@ SECRET_KEY = "2d198ab42cab41318cef277858e8571f"
 import os
 symbol = os.getenv("SYMBOL")
 BASE_URL = "https://api.mexc.com"
-poll_interval = 600  # كل 10 دقائق (600 ثانية)
+poll_interval = 300  # كل 5 دقائق (300 ثانية)
 trade_amount = 1.0   # كل صفقة 1 دولار
 profit_targets = [0.5, 1.0, 2.0]
 
