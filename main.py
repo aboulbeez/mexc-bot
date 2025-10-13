@@ -25,7 +25,7 @@ API_KEY = "mx0vglcybDNzKBdv3Y"
 SECRET_KEY = "2d198ab42cab41318cef277858e8571f"
 
 # ===== إعداد الاستراتيجية =====
-symbol = "LTCUSDT"
+symbol = "ENAUSDT"
 BASE_URL = "https://api.mexc.com"
 poll_interval = 600  # كل 10 دقائق (600 ثانية)
 trade_amount = 1.0   # كل صفقة 1 دولار
