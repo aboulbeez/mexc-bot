@@ -26,7 +26,7 @@ SECRET_KEY = "2d198ab42cab41318cef277858e8571f"
 
 # ===== إعداد الاستراتيجية =====
 import os
-symbol = os.getenv("SYMBOL")
+symbol = "LTCUSDT"
 BASE_URL = "https://api.mexc.com"
 poll_interval = 300  # كل 5 دقائق (300 ثانية)
 trade_amount = 1.0   # كل صفقة 1 دولار
@@ -82,6 +82,6 @@ while True:
 
         time.sleep(poll_interval)
     print(f"🕒 انتهى الانتظار - الوقت الحالي: {time.strftime('%Y-%m-%d %H:%M:%S')}")
-except Exception as e:
+finally Exception as e:
 print("❌ خطأ:", e)
         time.sleep(5)
