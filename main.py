@@ -3,29 +3,11 @@ import hmac
 import hashlib
 import requests
 
-from flask import Flask
-import threading
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "Bot is alive!"
-
-def run():
-    app.run(host="0.0.0.0", port=10000)
-
-def keep_alive():
-    t = threading.Thread(target=run)
-    t.start()
-
-keep_alive()  # ← استدعِها قبل بدء البوت
 # ===== إعداد المفاتيح =====
 API_KEY = "mx0vglcybDNzKBdv3Y"
 SECRET_KEY = "2d198ab42cab41318cef277858e8571f"
 
 # ===== إعداد الاستراتيجية =====
-import os
 symbol = "LTCUSDT"
 BASE_URL = "https://api.mexc.com"
 poll_interval = 300  # كل 5 دقائق (300 ثانية)
@@ -50,15 +32,8 @@ def place_order(side, sym, **kwargs):
     params["signature"] = sign(params)
     headers = {"X-MEXC-APIKEY": API_KEY}
     r = requests.post(BASE_URL + endpoint, headers=headers, params=params)
-    data = r.json()
-
-    # تحقق من الرد إذا فيه خطأ
-    if "msg" in data:
-        print(f"⚠️ فشل أمر {side}: {data['msg']}")
-    else:
-        print(f"📤 تم إرسال أمر {side} بنجاح")
-
-    return data
+    print(f"📤 تم إرسال أمر {side}")
+    return r.json()
 
 # ===== المنطق الرئيسي =====
 print(f"🚀 بدء تشغيل البوت على {symbol} (كل 5 دقائق 5 صفقات × 1 USDT)")
@@ -80,8 +55,9 @@ while True:
             place_order("SELL", symbol, type="LIMIT", quantity=str(qty),
                         price=str(sell_price), timeInForce="GTC")
 
+        print("⏳ انتظار 5 دقائق قبل الصفقات القادمة...\n")
         time.sleep(poll_interval)
-    print(f"🕒 انتهى الانتظار - الوقت الحالي: {time.strftime('%Y-%m-%d %H:%M:%S')}")
-finally Exception as e:
-print("❌ خطأ:", e)
+
+    except Exception as e:
+        print("❌ خطأ:", e)
         time.sleep(5)
