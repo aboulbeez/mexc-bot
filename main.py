@@ -3,6 +3,9 @@ import hmac
 import hashlib
 import requests
 
+from flask import Flask
+import threading
+import os
 # ===== إعداد المفاتيح =====
 API_KEY = "mx0vglcybDNzKBdv3Y"
 SECRET_KEY = "2d198ab42cab41318cef277858e8571f"
@@ -34,7 +37,23 @@ def place_order(side, sym, **kwargs):
     r = requests.post(BASE_URL + endpoint, headers=headers, params=params)
     print(f"📤 تم إرسال أمر {side}")
     return r.json()
+# ===== واجهة ويب بسيطة للحفاظ على عمل Render =====
+from flask import Flask
+import threading
+import os
 
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "✅ Trading bot is running!"
+
+def run_flask():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
+# تشغيل Flask في خيط منفصل (Thread)
+threading.Thread(target=run_flask).start()
 # ===== المنطق الرئيسي =====
 print(f"🚀 بدء تشغيل البوت على {symbol} (كل 5 دقائق 5 صفقات × 1 USDT)")
 
