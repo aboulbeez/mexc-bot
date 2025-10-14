@@ -80,3 +80,13 @@ while True:
     except Exception as e:
         print("❌ خطأ:", e)
         time.sleep(5)
+# ===== تشغيل خادم صغير حتى يظل البوت شغال على Render =====
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "✅ البوت شغال على Render بدون توقف!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
