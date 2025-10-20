@@ -7,9 +7,8 @@ from flask import Flask
 import threading
 import os
 # ===== إعداد المفاتيح =====
-API_KEY = "mx0vglcybDNzKBdv3Y"
-SECRET_KEY = "2d198ab42cab41318cef277858e8571f"
-
+API_KEY = "mx0vglVCmvw86sDJsF"
+SECRET_KEY = "6618337a62114be7957593511d52cce5"
 # ===== إعداد الاستراتيجية =====
 symbol = "PAXGUSDT"
 BASE_URL = "https://api.mexc.com"
