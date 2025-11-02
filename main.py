@@ -14,7 +14,7 @@ symbol = "LTCUSDT"
 BASE_URL = "https://api.mexc.com"
 poll_interval = 300  # كل 5 دقائق (300 ثانية)
 trade_amount = 1.0   # كل صفقة 1 دولار
-profit_targets = [0.35 ,0.5 , 0.7 ,1.0,1.5, 2.0 , 3.0 , 4.0 , 5.0,0.7]
+profit_targets = [0.3,0.4 ,0.5 , 0.7,0.9,1.0,1.5, 2.0 , 4.0 ,7.0]
 
 # ===== دوال مساعدة =====
 def get_price(sym):
