@@ -12,7 +12,7 @@ SECRET_KEY = "6618337a62114be7957593511d52cce5"
 # ===== إعداد الاستراتيجية =====
 symbol = "LTCUSDT"
 BASE_URL = "https://api.mexc.com"
-poll_interval = 300  # كل 5 دقائق (300 ثانية)
+poll_interval = 180  # كل 3 دقائق (180 ثانية)
 trade_amount = 1.0   # كل صفقة 1 دولار
 profit_targets = [0.3,0.4 ,0.5 , 0.7,0.9,1.0,1.5, 2.0 , 4.0 ,7.0]
 
